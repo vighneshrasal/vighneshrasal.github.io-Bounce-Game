@@ -12,10 +12,20 @@ const ball = {
     dy: 4
 };
 
+function reset(){
+    ball.speed = 10; ball.dx = 4; ball.dy = 4;
+}
+
 let score = 0;
 document.getElementById('reset').addEventListener('click', function scoreReset(){
     score = 0;
     document.getElementById('score').innerHTML = score;
+    ball.x = canvas.width/2; ball.y = canvas.width/2;
+    ball.dx = 0; ball.dy = 0;
+    speed = 0;
+     ball.x += ball.dx; 
+     ball.y += ball.dy;
+    //  reset();
 });
 
 // Function to draw the ball
@@ -61,7 +71,10 @@ canvas.addEventListener('click', (event) => {
     // Set the ball position to the clicked location
     ball.x = mouseX;
     ball.y = mouseY;
+    reset();
+    updateBall();
 });
+
 
 // Main game loop
 function gameLoop() {
